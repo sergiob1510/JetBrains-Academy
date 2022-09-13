@@ -64,37 +64,37 @@ class Machine {
 
     public void printMachineStatus() {
         System.out.println("The coffee machine has:");
-        System.out.printf("%d ml of water \n", waterInMachine);
-        System.out.printf("%d ml of milk \n", milkInMachine);
-        System.out.printf("%d g of coffee beans \n", coffeeInMachine);
-        System.out.printf("%d disposable cups \n", cupsInMachine);
-        System.out.printf("$%d of money \n", moneyInMachine);
+        System.out.printf("%d ml of water \n", this.waterInMachine);
+        System.out.printf("%d ml of milk \n", this.milkInMachine);
+        System.out.printf("%d g of coffee beans \n", this.coffeeInMachine);
+        System.out.printf("%d disposable cups \n", this.cupsInMachine);
+        System.out.printf("$%d of money \n", this.moneyInMachine);
     }
     public void makeCoffee(Recipe recipe) {
         if (checkMachineResources(recipe.water, recipe.milk, recipe.coffee )) {
-            waterInMachine -= recipe.water;
-            milkInMachine -= recipe.milk;
-            coffeeInMachine -= recipe.coffee;
-            cupsInMachine -= 1;
-            moneyInMachine += recipe.money;
+            this.waterInMachine -= recipe.water;
+            this.milkInMachine -= recipe.milk;
+            this.coffeeInMachine -= recipe.coffee;
+            this.cupsInMachine -= 1;
+            this.moneyInMachine += recipe.money;
             System.out.println("I have enough resources, making you a coffee!");
         }
     }
     public boolean checkMachineResources(int water, int milk, int coffee) {
-        if (waterInMachine < water) { System.out.println("Sorry, not enough water!"); return false; }
-        if (milkInMachine < milk) { System.out.println("Sorry, not enough milk!"); return false; }
-        if (coffeeInMachine < coffee) { System.out.println("Sorry, not enough coffee beans!"); return false; }
-        if (cupsInMachine < 1) { System.out.println("Sorry, not enough cups!"); return false; }
+        if (this.waterInMachine < water) { System.out.println("Sorry, not enough water!"); return false; }
+        if (this.milkInMachine < milk) { System.out.println("Sorry, not enough milk!"); return false; }
+        if (this.coffeeInMachine < coffee) { System.out.println("Sorry, not enough coffee beans!"); return false; }
+        if (this.cupsInMachine < 1) { System.out.println("Sorry, not enough cups!"); return false; }
         return true;
     }
     public void fillMachine(int waterRefill, int milkRefill, int coffeeRefill, int cupsRefill) {
-        waterInMachine += waterRefill;
-        milkInMachine += milkRefill;
-        coffeeInMachine += coffeeRefill;
-        cupsInMachine += cupsRefill;
+        this.waterInMachine += waterRefill;
+        this.milkInMachine += milkRefill;
+        this.coffeeInMachine += coffeeRefill;
+        this.cupsInMachine += cupsRefill;
     }
     public void takeMoney() {
         System.out.printf("I gave you $%d \n", moneyInMachine);
-        moneyInMachine = 0;
+        this.moneyInMachine = 0;
     }
 }
